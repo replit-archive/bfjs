@@ -2,9 +2,372 @@
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <script src="bfjs.js"></script>
-    <script>
-    i = new BF.Interpreter(function(cb){cb(window.prompt("S"));}, function(x){console.log(x)}, function(){console.log(arguments)});
-    i.eval(" ,>++++++[<-------->-],[<+>-]<.")</script>
+    <style>
+      select{
+        float:left;
+      }
+      textarea {
+        width:750px;
+        height:750px;
+      }
+    </style>
+    <script type="text/javascript" src="bfjs.js"></script>
   </head>
+  <body>
+    <select id="examples" onchange="example()">
+      <option>Select a value</option>
+      <option value="===================================================================
+      ======================== OUTPUT STRING ============================
+      ===================================================================
+      &gt;++++++++[&lt;++++++++&gt;-]&lt;++++++++++++++++.[-]
+      &gt;++++++++++[&lt;++++++++++&gt;-]&lt;++++++++++++++.[-]
+      &gt;++++++++++[&lt;++++++++++&gt;-]&lt;+++++.[-]
+      &gt;++++++++++[&lt;++++++++++&gt;-]&lt;+++++++++.[-]
+      &gt;++++++++++[&lt;++++++++++&gt;-]&lt;+.[-]
+      &gt;++++++++++[&lt;++++++++++&gt;-]&lt;+++++++++++++++.[-]
+      &gt;+++++[&lt;+++++&gt;-]&lt;+++++++.[-]
+      &gt;++++++++++[&lt;++++++++++&gt;-]&lt;+++++++++++++++++.[-]
+      &gt;++++++++++[&lt;++++++++++&gt;-]&lt;++++++++++++.[-]
+      &gt;+++++[&lt;+++++&gt;-]&lt;+++++++.[-]
+      &gt;++++++++++[&lt;++++++++++&gt;-]&lt;++++++++++++++++.[-]
+      &gt;++++++++++[&lt;++++++++++&gt;-]&lt;+++++++++++.[-]
+      &gt;+++++++[&lt;+++++++&gt;-]&lt;+++++++++.[-]
+      &gt;+++++[&lt;+++++&gt;-]&lt;+++++++.[-]
+      ===================================================================
+      ======================== INPUT NUMBER  ============================
+      ===================================================================
+      +                          cont=1
+      [
+       -                         cont=0
+       &gt;,
+       ======SUB10======
+       ----------
+
+       [                         not 10
+        &lt;+&gt;                      cont=1
+        =====SUB38======
+        ----------
+        ----------
+        ----------
+        --------
+
+        &gt;
+        =====MUL10=======
+        [&gt;+&gt;+&lt;&lt;-]&gt;&gt;[&lt;&lt;+&gt;&gt;-]&lt;     dup
+
+        &gt;&gt;&gt;+++++++++
+        [
+         &lt;&lt;&lt;
+         [&gt;+&gt;+&lt;&lt;-]&gt;&gt;[&lt;&lt;+&gt;&gt;-]&lt;    dup
+         [&lt;&lt;+&gt;&gt;-]
+         &gt;&gt;-
+        ]
+        &lt;&lt;&lt;[-]&lt;
+        ======RMOVE1======
+        &lt;
+        [&gt;+&lt;-]
+       ]
+       &lt;
+      ]
+      &gt;&gt;[&lt;&lt;+&gt;&gt;-]&lt;&lt;
+
+      ===================================================================
+      ======================= PROCESS NUMBER  ===========================
+      ===================================================================
+
+      ==== ==== ==== ====
+      numd numu teid teiu
+      ==== ==== ==== ====
+
+      &gt;+&lt;-
+      [
+       &gt;+
+       ======DUP======
+       [&gt;+&gt;+&lt;&lt;-]&gt;&gt;[&lt;&lt;+&gt;&gt;-]&lt;
+
+       &gt;+&lt;--
+
+       &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;+&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;   isprime=1
+
+       [
+        &gt;+
+
+        &lt;-
+
+        =====DUP3=====
+        &lt;[&gt;&gt;&gt;+&gt;+&lt;&lt;&lt;&lt;-]&gt;&gt;&gt;&gt;[&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;-]&lt;&lt;&lt;
+
+        =====DUP2=====
+        &gt;[&gt;&gt;+&gt;+&lt;&lt;&lt;-]&gt;&gt;&gt;[&lt;&lt;&lt;+&gt;&gt;&gt;-]&lt;&lt;&lt; &lt;
+
+
+        &gt;&gt;&gt;
+
+
+        ====DIVIDES=======
+        [&gt;+&gt;+&lt;&lt;-]&gt;&gt;[&lt;&lt;+&gt;&gt;-]&lt;   DUP i=div
+
+        &lt;&lt;
+        [
+          &gt;&gt;&gt;&gt;&gt;+               bool=1
+          &lt;&lt;&lt;
+          [&gt;+&gt;+&lt;&lt;-]&gt;&gt;[&lt;&lt;+&gt;&gt;-]&lt; DUP
+          [&gt;&gt;[-]&lt;&lt;-]           IF i THEN bool=0
+          &gt;&gt;
+          [                    IF i=0
+            &lt;&lt;&lt;&lt;
+            [&gt;+&gt;+&lt;&lt;-]&gt;&gt;[&lt;&lt;+&gt;&gt;-]&lt; i=div
+            &gt;&gt;&gt;
+            -                  bool=0
+          ]
+          &lt;&lt;&lt;
+          -                    DEC i
+          &lt;&lt;
+          -
+        ]
+
+        +&gt;&gt;[&lt;&lt;[-]&gt;&gt;-]&lt;&lt;          
+        &gt;[-]&lt;                  CLR div
+        =====END DIVIDES====
+
+
+        [&gt;&gt;&gt;&gt;&gt;&gt;[-]&lt;&lt;&lt;&lt;&lt;&lt;-]     if divides then isprime=0
+
+
+        &lt;&lt;
+
+        &gt;&gt;[-]&gt;[-]&lt;&lt;&lt;
+       ]
+
+       &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+       [
+        -
+        &lt;&lt;&lt;&lt;&lt;&lt;&lt;[-]&lt;&lt;
+
+        [&gt;&gt;+&gt;+&lt;&lt;&lt;-]&gt;&gt;&gt;[&lt;&lt;&lt;+&gt;&gt;&gt;-]&lt;&lt;&lt;
+
+        &gt;&gt;
+
+
+
+
+        ===================================================================
+        ======================== OUTPUT NUMBER  ===========================
+        ===================================================================
+        [&gt;+&lt;-]&gt;
+
+        [
+         ======DUP======
+         [&gt;+&gt;+&lt;&lt;-]&gt;&gt;[&lt;&lt;+&gt;&gt;-]&lt;
+
+
+         ======MOD10====
+         &gt;+++++++++&lt;
+         [
+          &gt;&gt;&gt;+&lt;&lt;              bool= 1
+          [&gt;+&gt;[-]&lt;&lt;-]         bool= ten==0
+          &gt;[&lt;+&gt;-]             ten = tmp
+          &gt;[&lt;&lt;++++++++++&gt;&gt;-]  if ten=0 ten=10
+          &lt;&lt;-                 dec ten     
+          &lt;-                  dec num
+         ]
+         +++++++++            num=9
+         &gt;[&lt;-&gt;-]&lt;             dec num by ten
+
+         =======RROT======
+            [&gt;+&lt;-]
+         &lt;  [&gt;+&lt;-]
+         &lt;  [&gt;+&lt;-]
+         &gt;&gt;&gt;[&lt;&lt;&lt;+&gt;&gt;&gt;-]
+         &lt;
+
+         =======DIV10========
+         &gt;+++++++++&lt;
+         [
+          &gt;&gt;&gt;+&lt;&lt;                bool= 1
+          [&gt;+&gt;[-]&lt;&lt;-]           bool= ten==0
+          &gt;[&lt;+&gt;-]               ten = tmp
+          &gt;[&lt;&lt;++++++++++&gt;&gt;&gt;+&lt;-] if ten=0 ten=10  inc div
+          &lt;&lt;-                   dec ten     
+          &lt;-                    dec num
+         ]
+         &gt;&gt;&gt;&gt;[&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;-]&lt;&lt;&lt;&lt;   copy div to num
+         &gt;[-]&lt;                  clear ten
+
+         =======INC1=========
+         &lt;+&gt;
+        ]
+
+        &lt;
+        [
+         =======MOVER=========
+         [&gt;+&lt;-]
+
+         =======ADD48========
+         +++++++[&lt;+++++++&gt;-]&lt;-&gt;
+
+         =======PUTC=======
+         &lt;.[-]&gt;
+
+         ======MOVEL2========
+         &gt;[&lt;&lt;+&gt;&gt;-]&lt;
+
+         &lt;-
+        ]
+
+        &gt;++++[&lt;++++++++&gt;-]&lt;.[-]
+
+        ===================================================================
+        =========================== END FOR ===============================
+        ===================================================================
+
+
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+       ]
+       &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+
+
+       &gt;[-]&lt;
+        [-]
+       &lt;&lt;-
+      ]
+
+      ======LF========
+
+      ++++++++++.[-]">Prime</option>
+      <option value="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;+++++&gt;+&gt;+&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;++&gt;++&gt;++++++&gt;+&gt;++&gt;+++&gt;++++
+      +&gt;+&gt;++++&gt;+&gt;++++++&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;++++&gt;+&gt;++&gt;+&gt;+&gt;+&gt;++&gt;++&gt;+++++&gt;++&gt;++++&gt;+&gt;
+      ++&gt;+&gt;+&gt;++++++++&gt;+++&gt;+&gt;++++++&gt;+&gt;+&gt;+++++++++&gt;+++++&gt;+&gt;++++&gt;+&gt;++++++&gt;+&gt;+++++
+      ++&gt;+&gt;+&gt;+++++++++&gt;++++++&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;++++&gt;+&gt;++&gt;+&gt;+&gt;+&gt;+++&gt;+&gt;++++++&gt;+&gt;+
+      &gt;+&gt;++&gt;+&gt;+++++&gt;++&gt;++++&gt;+&gt;++++++&gt;+&gt;+++&gt;+&gt;++++&gt;+&gt;++&gt;+&gt;++++++&gt;+&gt;+++&gt;+&gt;+++++&gt;
+      +&gt;++++&gt;+&gt;++&gt;++&gt;+&gt;+&gt;+++&gt;++&gt;++++++&gt;+&gt;++&gt;++&gt;+++++&gt;+&gt;++++&gt;+&gt;+++&gt;++&gt;+&gt;+&gt;++&gt;+&gt;
+      +&gt;+&gt;++&gt;+&gt;++++++&gt;+&gt;++++&gt;+&gt;+++&gt;+++++&gt;+++++&gt;+&gt;++&gt;++&gt;++++&gt;+&gt;++++++&gt;+&gt;+&gt;+&gt;++&gt;
+      +&gt;+++++++&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;++++&gt;+&gt;+++&gt;++&gt;+&gt;+&gt;+++++&gt;+&gt;++++&gt;+&gt;++&gt;++&gt;+&gt;+&gt;+++
+      &gt;++&gt;++++++&gt;++&gt;+++&gt;+&gt;+++++&gt;+&gt;++++&gt;+&gt;+++&gt;+&gt;+&gt;+&gt;++&gt;+&gt;++++++&gt;+&gt;+++&gt;+&gt;+++++&gt;+
+      &gt;++++&gt;+&gt;++&gt;++&gt;+&gt;+&gt;+++&gt;+&gt;+&gt;+&gt;+++&gt;+&gt;++++++&gt;+&gt;+++&gt;+&gt;++++++&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;
+      +++&gt;++&gt;++++++&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;++++&gt;+&gt;+++&gt;++&gt;+++++&gt;+&gt;++&gt;++&gt;++++++&gt;+&gt;++&gt;++
+      +&gt;+&gt;+&gt;+++&gt;++&gt;+++++&gt;+&gt;+++&gt;++&gt;++++++&gt;+&gt;+++&gt;+&gt;++++++&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;++++&gt;+
+      &gt;+++&gt;+&gt;+++++&gt;+&gt;++&gt;++&gt;++++++&gt;+&gt;++&gt;++&gt;+&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;+++&gt;++&gt;++++++&gt;+&gt;++
+      +&gt;++&gt;++++++&gt;+&gt;++++&gt;+&gt;++++++&gt;+&gt;+&gt;++&gt;+++&gt;+&gt;+++++&gt;+&gt;++++&gt;+&gt;++&gt;+&gt;+&gt;+++&gt;+++&gt;+
+      &gt;++++++&gt;+&gt;+&gt;++++++&gt;++&gt;++&gt;+&gt;++&gt;+++++&gt;+&gt;++&gt;++&gt;++++++&gt;+&gt;++&gt;+&gt;++++&gt;+&gt;++&gt;+&gt;++
+      ++&gt;+&gt;++&gt;+&gt;+++++&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;+++&gt;++&gt;++++++&gt;+&gt;+++&gt;+&gt;+&gt;+&gt;++&gt;+&gt;+&gt;++&gt;++++
+      +&gt;+&gt;++&gt;++&gt;++++++&gt;+&gt;++&gt;++++&gt;+++++&gt;+&gt;++++&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;+++&gt;++&gt;++++++&gt;+&gt;
+      +++&gt;++&gt;+&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;++&gt;++&gt;++++++&gt;+&gt;++&gt;++&gt;++&gt;++&gt;+&gt;+&gt;++&gt;++&gt;++++++&gt;+&gt;+
+      ++&gt;++&gt;+++++&gt;+&gt;+++&gt;++&gt;++++++&gt;+&gt;+++&gt;++&gt;+&gt;+&gt;++&gt;+&gt;+&gt;+&gt;++&gt;+&gt;+&gt;++&gt;+++++&gt;+&gt;++&gt;+
+      +&gt;++++++&gt;+&gt;++&gt;+++&gt;+++++&gt;+&gt;++++&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;+++&gt;++&gt;++++++&gt;+&gt;+++&gt;+&gt;+&gt;+
+      &gt;+++&gt;+&gt;+++++&gt;+&gt;++&gt;++&gt;++++++&gt;+&gt;++&gt;+++&gt;+&gt;+&gt;++&gt;++&gt;++++++&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;++
+      +&gt;++&gt;++++++&gt;+&gt;+++&gt;++&gt;+&gt;+&gt;+++++&gt;+&gt;++&gt;++&gt;++++++&gt;+&gt;++&gt;+++&gt;++++++&gt;+&gt;+++&gt;+&gt;++
+      +++&gt;+&gt;++&gt;++&gt;++++++&gt;+&gt;++&gt;+++&gt;++&gt;++++&gt;+++++&gt;+&gt;++++&gt;+&gt;++&gt;+&gt;+&gt;++++++++&gt;+++&gt;+
+      &gt;++++++&gt;+&gt;+&gt;+++++++++&gt;++&gt;+&gt;+++++&gt;+&gt;++&gt;++&gt;++++++&gt;+&gt;+&gt;+++&gt;+++&gt;++++&gt;+&gt;++&gt;++
+      +&gt;++&gt;+&gt;++&gt;+++&gt;++&gt;++++&gt;++&gt;+++&gt;+++++&gt;+++++&gt;+&gt;++++&gt;+&gt;++&gt;+++++++++++&gt;+&gt;+&gt;+++
+      &gt;+&gt;+++&gt;+&gt;+&gt;+&gt;+++&gt;+++++++++&gt;++++++&gt;+&gt;+&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;++++&gt;+&gt;++&gt;+&gt;+&gt;++++
+      &gt;+++&gt;+&gt;++++++&gt;+&gt;+&gt;+++++++&gt;++&gt;+&gt;+++++&gt;+&gt;++++&gt;+&gt;++&gt;+++++++++++&gt;+&gt;+&gt;+++&gt;++&gt;
+      +&gt;+&gt;+++&gt;++++&gt;+&gt;+&gt;+++&gt;++&gt;+&gt;+&gt;+++&gt;+++&gt;++++++&gt;+&gt;+&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;++++&gt;+&gt;++
+      &gt;+&gt;+&gt;+++&gt;+++&gt;+&gt;++++++&gt;+&gt;+&gt;+&gt;+&gt;+++++&gt;++&gt;+&gt;+++++&gt;+&gt;++++&gt;+&gt;++&gt;+++++++++++++
+      &gt;+&gt;+&gt;+++&gt;++&gt;+&gt;+&gt;+++&gt;++&gt;+&gt;+&gt;+++&gt;++&gt;+&gt;+&gt;+++&gt;++&gt;+&gt;+&gt;+++&gt;++&gt;+&gt;+&gt;+++&gt;++&gt;+&gt;+&gt;+
+      ++&gt;+&gt;++++++&gt;+&gt;+&gt;+&gt;+++&gt;+&gt;+++++&gt;+&gt;++++&gt;+&gt;++&gt;+&gt;+&gt;++++++&gt;+++&gt;+&gt;++++++&gt;+&gt;+&gt;++
+      +++++&gt;+++&gt;+++++&gt;+++++&gt;+&gt;+++&gt;++&gt;++++++&gt;+[&lt;&lt;]&lt;&lt;&lt;&lt;&lt;+++++++[&lt;++++++&gt;-]&lt;+[&lt;+&lt;
+      &lt;+&lt;&lt;+&lt;&lt;+&lt;&lt;+&lt;&lt;+&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;-]&gt;++++++[&lt;+++&gt;-]&lt;+[&lt;&lt;&lt;+&lt;&lt;+&lt;&lt;&lt;&lt;+&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+      &gt;&gt;&gt;&gt;-]&gt;+++++++[&lt;++++&gt;-]&lt;+[&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;+&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;-]&lt;&lt;&lt;&lt;&lt;--&lt;&lt;++&lt;&lt;++&lt;&lt;&lt;&lt;+
+      ++[&gt;&gt;]&gt;+++++++++[&lt;++++++++&gt;-]&gt;&gt;&gt;&gt;&gt;&gt;&gt;[&gt;&gt;]&lt;[&gt;&gt;&gt;[&gt;&gt;]+&lt;&lt;[&lt;&lt;]&lt;[&gt;&gt;+&gt;&gt;&gt;[&gt;&gt;]&lt;+&lt;[
+      &lt;&lt;]&lt;-]&gt;&gt;&gt;[&gt;&gt;]++&gt;+&gt;+&lt;&lt;[&lt;&lt;]&lt;&lt;[&gt;&gt;+&gt;&gt;&gt;&gt;[&gt;&gt;]&lt;+&lt;&lt;[&lt;&lt;]&lt;-]&gt;&gt;&gt;&gt;[&gt;&gt;]++&gt;+&lt;[&lt;&lt;]&lt;]&gt;-&gt;
+      -&gt;[&gt;&gt;]++&gt;&gt;++++++[&lt;+++&gt;-]&lt;++[-[&lt;&lt;[&lt;&lt;]&lt;+&gt;&gt;[&gt;&gt;]&lt;-]&lt;[&lt;[&lt;&lt;]&lt;&lt;+&gt;&gt;&gt;[&gt;&gt;]&lt;&lt;-]&lt;[&lt;&lt;
+      ]&lt;[&lt;[&lt;+&lt;+&gt;&gt;-]&lt;[&gt;+&lt;-]&lt;[[&lt;&lt;+&gt;&gt;-]+&lt;&lt;-]&lt;.&gt;+[-&gt;&gt;]&lt;&lt;&lt;&lt;&lt;-[&gt;+&gt;+&lt;&lt;-]&gt;&gt;[&lt;&lt;+&gt;&gt;-]&lt;[&gt;
+      -&lt;[-]]&gt;+[&lt;+&gt;-]&lt;[+++++++++.[-]+++++++++[&lt;++++++++&gt;-]]&gt;&gt;+&gt;-]&lt;[-]&gt;&gt;&gt;[&gt;&gt;]&lt;+]
+      ">Quine</option>
+    <option value="  +++++++++++ number of digits to output
+      &gt; #1
+      + initial number
+      &gt;&gt;&gt;&gt; #5
+      ++++++++++++++++++++++++++++++++++++++++++++ (comma)
+      &gt; #6
+      ++++++++++++++++++++++++++++++++ (space)
+      &lt;&lt;&lt;&lt;&lt;&lt; #0
+      [
+        &gt; #1
+        copy #1 to #7
+        [&gt;&gt;&gt;&gt;&gt;&gt;+&gt;+&lt;&lt;&lt;&lt;&lt;&lt;&lt;-]&gt;&gt;&gt;&gt;&gt;&gt;&gt;[&lt;&lt;&lt;&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;-]
+
+        &lt;
+        divide #7 by 10 (begins in #7)
+        [
+          &gt;
+          ++++++++++  set the divisor #8
+          [
+            subtract from the dividend and divisor
+            -&lt;-
+            if dividend reaches zero break out
+              copy dividend to #9
+              [&gt;&gt;+&gt;+&lt;&lt;&lt;-]&gt;&gt;&gt;[&lt;&lt;&lt;+&gt;&gt;&gt;-]
+              set #10
+              +
+              if #9 clear #10
+              &lt;[&gt;[-]&lt;[-]]
+              if #10 move remaining divisor to #11
+              &gt;[&lt;&lt;[&gt;&gt;&gt;+&lt;&lt;&lt;-]&gt;&gt;[-]]
+            jump back to #8 (divisor possition)
+            &lt;&lt;
+          ]
+          if #11 is empty (no remainder) increment the quotient #12
+          &gt;&gt;&gt; #11
+          copy to #13
+          [&gt;&gt;+&gt;+&lt;&lt;&lt;-]&gt;&gt;&gt;[&lt;&lt;&lt;+&gt;&gt;&gt;-]
+          set #14
+          +
+          if #13 clear #14
+          &lt;[&gt;[-]&lt;[-]]
+          if #14 increment quotient
+          &gt;[&lt;&lt;+&gt;&gt;[-]]
+          &lt;&lt;&lt;&lt;&lt;&lt;&lt; #7
+        ]
+
+        quotient is in #12 and remainder is in #11
+        &gt;&gt;&gt;&gt;&gt; #12
+        if #12 output value plus offset to ascii 0
+        [++++++++++++++++++++++++++++++++++++++++++++++++.[-]]
+        subtract #11 from 10
+        ++++++++++  #12 is now 10
+        &lt; #11
+        [-&gt;-&lt;]
+        &gt; #12
+        output #12 even if it&#x27;s zero
+        ++++++++++++++++++++++++++++++++++++++++++++++++.[-]
+        &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; #1
+
+        check for final number
+        copy #0 to #3
+        &lt;[&gt;&gt;&gt;+&gt;+&lt;&lt;&lt;&lt;-]&gt;&gt;&gt;&gt;[&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;-]
+        &lt;- #3
+        if #3 output (comma) and (space)
+        [&gt;&gt;.&gt;.&lt;&lt;&lt;[-]]
+        &lt;&lt; #1
+
+        [&gt;&gt;+&gt;+&lt;&lt;&lt;-]&gt;&gt;&gt;[&lt;&lt;&lt;+&gt;&gt;&gt;-]&lt;&lt;[&lt;+&gt;-]&gt;[&lt;+&gt;-]&lt;&lt;&lt;-
+      ]
+    ">Fib under 100</option>
+    </select>
+    <textarea id="code">
+      
+    </textarea>
+    <button onclick="Evaluate()">Eval</button>
+    <textarea id="out"></textarea>
+    <script>
+    var code = document.getElementById('code'),
+        examples = document.getElementById('examples'),
+        out = document.getElementById('out');
+        
+    var bfi = new BF.Interpreter(function(cb){cb(window.prompt("input"));}, function(x){out.value += x});
+    function example(e){
+      for (var i = 0; i < examples.children.length; i++)
+        if (examples.children[i].selected)
+          code.value = examples.children[i].value;
+    }
+    function Evaluate(){
+      out.value = "";
+      bfi.reset();
+      bfi.evaluate(code.value);
+    }
+    </script>
+    </body>
 </html>

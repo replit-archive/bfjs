@@ -59,18 +59,24 @@ BF = (function (){
 /************************ Interpreter *************************/  
   // Interpreter
   var Interpreter = (function () {
+    
     var Interpreter = function (input, output, result) {
       this.user_input = input;
       this.user_output = output;
       this.result = typeof result === "function" ? result : function () {};
-      this.d_ptr = 0;
-      this.i_ptr = 0;
-      // instead of allocating 30000 bytes, we consider undefined to be 0
-      this.data = [];
-    }
+      this.reset();
+    };
+    
     Interpreter.prototype = {
       
-      eval: function (code) {
+      reset: function () {
+        this.d_ptr = 0;
+        this.i_ptr = 0;
+        // instead of allocating 30000 bytes, we consider undefined to be 0
+        this.data = [];
+      },
+      
+      evaluate: function (code) {
          this.code = (code instanceof Parser ? code : new Parser(code)).tokenized;
          this.i_ptr = 0;
          this.run();
@@ -89,7 +95,6 @@ BF = (function (){
           cont = this[this.instruction.type]();
           this.i_ptr++;
         }
-        console.log(this.result);
         cont(this.data, this.d_ptr);
       },
       
