@@ -346,6 +346,115 @@
         [&gt;&gt;+&gt;+&lt;&lt;&lt;-]&gt;&gt;&gt;[&lt;&lt;&lt;+&gt;&gt;&gt;-]&lt;&lt;[&lt;+&gt;-]&gt;[&lt;+&gt;-]&lt;&lt;&lt;-
       ]
     ">Fib under 100</option>
+    <option value="This program is supposed to end up to be &quot;FizzBuzz&quot; written in Brainfuck
+
+    Print the numbers from 1 to 100 but for multiples of three print &quot;Fizz&quot;
+    instead of the number and for the multiples of five print &quot;Buzz&quot;
+
+    When numbers are both multiples of three and five print &quot;FizzBuzz&quot;
+
+    ################################################################################
+    ###
+
+    +++++ +++++             c0          : Set up the counter to a value of 10
+    [
+      &gt;&gt; +++++ +++++        c2          : Increment the cell by 10
+      &lt;&lt; -                  c0          : Decrement the cell by 1
+    ]
+
+    At this point cell 2 is 100; datapointer is now at cell 0
+
+    ################################################################################
+    ###
+
+    +++++ +++++             c0          : Set cell 0 to the ASCII \n character
+
+    &gt;                       c1
+    +++++ +++++             c1
+    +++++ +++++             c1
+    +++++ +++++             c1
+    ++                      c1          : Set cell 2 to the ASCII &#x27; &#x27; character
+
+    ################################################################################
+
+    ################################################################################
+    ###
+    &gt;&gt;                      c3
+
+    +++++ +++++             c3          : Set the value to 10
+
+    [
+      &gt; +++++               c4          : Increment by five
+      &lt; -                   c3          : Decrement the counter
+    ]
+
+    &gt; -                     c4          : Decrement c4 from 50 for 49 (ascii &quot;1&quot;)
+                                        : this will be used as the offset for
+                                        : printing
+
+    ################################################################################
+    ### Start the loop through 1 to 10 and print
+    &lt;&lt;&lt; ..                  c1          : Jump to cell one to print two leading spaces
+    &gt;&gt;&gt; .                   c4          : Print &#x27;1&#x27;
+
+    &lt; +++++ +++             c3          : Set a counter to 8 to get 1 through 9 printed
+
+    [
+      &lt;&lt;&lt; .                 c0          : Jump to and print cell 0 (\n)
+      &gt; ..                  c1          : Print two leading spaces
+      &gt;&gt;&gt; + .               c4          : Increment cell 4 and print it
+      &lt; -                   c3          : Decrement cell 3
+    ]
+
+    &gt; ----- ----            c4          : Bring cell four back to ascii &#x27;0&#x27;
+
+
+    &lt;&lt;&lt;&lt; .                  c0          : Print a newline after the last 9
+
+
+    ################################################################################
+    ### Start the loop through 100
+
+    &gt;&gt;&gt;&gt;&gt; +++++ +++++       c5           : Set cell five to the ASCII &#x27;1&#x27;
+          +++++ +++++
+          +++++ +++++
+          +++++ +++++
+          +++++ ++++
+
+    &lt;&lt;                      c3
+    +++++ +++++             c3          : Pre-seed the counter with 10
+
+
+    [
+      -
+      &lt;&lt;&lt;                   c0          : Jumping to cell zero just to give myself a clean slate
+
+
+      &gt;&gt;&gt;&gt;&gt;&gt; +++++ +++++    c6          : Set cell 6 to our nested loop counter
+      [
+        -                   c6          : Decrement counter by one
+        &lt;&lt;&lt;&lt;&lt; .             c1          : Print a leading space
+        &gt;&gt;&gt;&gt;                c5
+        .
+        &gt;                   c6
+
+        &lt;&lt; . +              c4          : Print our last digit and increment it
+        &gt;&gt;                  c6
+
+        &lt;&lt;&lt;&lt;&lt;&lt; .            c0          : Jump to cell zero to print a newline
+        &gt;&gt;&gt;&gt;&gt;&gt;              c6
+      ]
+
+      &lt; +                   c5          : Increment second digit column in c5
+      &gt;                     c6
+
+      &lt;&lt; ----- -----        c4          : Clear our last digit printer column
+      &gt;&gt;
+
+      &lt;&lt;&lt;&lt;&lt;&lt;                c0
+
+      &gt;&gt;&gt;                   c3
+    ]">FizzBuzz</option>
     </select>
     <textarea id="code">
       

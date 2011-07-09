@@ -86,7 +86,7 @@ BF = (function (){
         var cont = true,
             instruction, instruction_name;
             var i =0;
-        while (typeof cont !== "function" && i < 100) {
+        while (typeof cont !== "function") {
           this.instruction = this.code[this.i_ptr];
           if (!this.instruction) {
             cont = this.result; 
